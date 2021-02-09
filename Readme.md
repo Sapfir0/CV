@@ -1,8 +1,8 @@
 
 
-CV
+[Download](https://github.com/Sapfir0/CV/releases/latest/download/resume.pdf) my resume
 
-https://github.com/Sapfir0/CV/releases/latest/download/my_asset_name.pdf
 
+Local build
 
     pdflatex src/main.tex

@@ -75,5 +75,5 @@ jobs:
           # Не переходим в папку src, поскольку download-artifacts грузит в текущую директорию
           asset_path: ./my_doc.pdf
           # Имя, которое будет высвечиваться в релизе
-          asset_name: my_asset_name.pdf
+          asset_name: resume.pdf
           asset_content_type: application/pdf
