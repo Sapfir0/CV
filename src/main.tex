@@ -1,0 +1,300 @@
+  %------------------------------------------------------------------------------
+% CV in Latex
+% Author : Charles Rambo
+% Based off of: https://github.com/sb2nov/resume and Jake's Resume on Overleaf
+% Most recently updated version may be found at https://github.com/fizixmastr 
+% License : MIT
+%------------------------------------------------------------------------------
+
+\documentclass[A4,11pt]{article}
+%\documentclass[letterpaper,11pt]{article} %For use in US
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{tikz}
+\input{glyphtounicode}
+
+\begin{comment}
+I am by no means a professional when it comes to the CV's/resumes, I have
+received various trainings on how to write a CV and resume from my high 
+school, as well as the Austin College and University of Eastern Finland's
+career counseling departments. As I intend to share my CV as a template, I 
+feel that it is my responsibility to provide explanations of my work.
+\end{comment}
+
+
+%-----FONT OPTIONS-------------------------------------------------------------
+\begin{comment}
+The font of the document will impact not just how readable it is, but how it is
+perceived. In the "The Craft of Scientific Writing" by Michael Alley, shares a
+common fonts for publication as well as their use. I have chosen to use
+Palatino for its legibility, some others are given below. There is far too much
+about typography to discus here. Note: serif fonts have short projecting
+strokes, sans-serif fonts are sans (without) these strokes.
+\end{comment}
+
+
+% serif
+ \usepackage{palatino}
+% \usepackage{times} %This is the default as well
+% \usepackage{charter}
+
+% sans-serif
+% \usepackage{helvet}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+%-----PAGE SETUP---------------------------------------------------------------
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-1cm}
+\addtolength{\evensidemargin}{-1cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\topmargin}{-1cm}
+\addtolength{\textheight}{2cm}
+
+% Margins for US Letter size
+%\addtolength{\oddsidemargin}{-0.5in}
+%\addtolength{\evensidemargin}{-0.5in}
+%\addtolength{\textwidth}{1in}
+%\addtolength{\topmargin}{-.5in}
+%\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0cm}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that .pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-----CUSTOM COMMANDS FOR FORMATTING SECTIONS----------------------------------
+\newcommand{\CVItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\CVSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \small#3 & \small #4 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\CVSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \text{\small#1} & \text{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\CVSubItem}[1]{\CVItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\CVSubHeadingListStart}{\begin{itemize}[leftmargin=0.5cm, label={}]}
+% \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]} % Uncomment for US
+\newcommand{\CVSubHeadingListEnd}{\end{itemize}}
+\newcommand{\CVItemListStart}{\begin{itemize}}
+\newcommand{\CVItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%------------------------------------------------------------------------------
+% CV STARTS HERE  %
+%------------------------------------------------------------------------------
+\begin{document}
+
+%-----HEADING------------------------------------------------------------------
+\begin{comment}
+In Europe it is common to include a picture of ones self in the CV. Select
+which heading appropriate for the document you are creating.
+\end{comment}
+
+
+\begin{center}
+   \textbf{\Huge \scshape Yurev Alexander} \\ \vspace{1pt} %\scshape sets small capital letters, remove if desired
+   \small +7 919-545-5574 $|$ 
+   \href{mailto:alexander.yurev@internet.ru}{\underline{alexander.yurev@internet.ru}} $|$\\
+   % Be sure to use a professional *personal* email address
+   \href{https://linkedin.com/in/yurevalexander}{\underline{linkedin.com/in/yurevalexander}} $|$
+   % you should adjust you linked in profile name to be professional and recognizable
+   \href{https://github.com/Sapfir0}{\underline{github.com/Sapfir0}}
+\end{center}
+
+
+
+\begin{comment}
+This CV was written for specifically for positions I was applying for in
+academia, and then modified to be a template.
+
+A standard CV is about two pages long where as a resume in the US is one page.
+sections can be added and removed here with this in mind. In my experience, 
+education, and applicable work experience and skills are the most import things
+to include on a resume. For a CV the Europass CV suggests the categories: Work
+Experience, Education and Training, Language Skills, Digital Skills,
+Communication and Interpersonal Skills, Conferences and Seminars, Creative Works
+Driver's License, Hobbies and Interests, Honors and Awards, Management and
+Leadership Skills, Networks and Memberships, Organizational Skills, Projects,
+Publications, Recommendations, Social and Political Activities, Volunteering.
+
+Your goal is to convey a who, what , when, where, why for every item you share. 
+The who is obviously you, but I believe the rest should be done in that order.
+For example below. An employer cares most about the degree held and typically 
+less about the institution or where it is located (This is still good 
+information though). Whatever order you choose be consistent throughout.
+\end{comment}
+
+%-----EDUCATION----------------------------------------------------------------
+\section{Education}
+  \CVSubHeadingListStart
+%    \CVSubheading % Example
+%      {Degree Achieved}{Years of Study}
+%      {Institution of Study}{Where it is located}
+    \CVSubheading
+      {{Bachelor of Computer Science $|$ \emph{\small{Major: Programming, Minor: Management}}}}{Sep. 2017 -- July 2021}
+      {Volgograd State Technical University}{Volgograd, Russia}
+  \CVSubHeadingListEnd
+
+%-----WORK EXPERIENCE----------------------------------------------------------
+\begin{comment}
+try to briefly explain what you did and why it is relevant to the position you
+are seeking
+\end{comment}
+
+\section{Work Experience}
+  \CVSubHeadingListStart
+%    \CVSubheading %Example
+%      {What you did}{When you worked there}
+%      {Who you worked for}{Where they are located}
+%      \CVItemListStart
+%        \CVItem{Why it is important to this employer}
+%      \CVItemListEnd
+    \CVSubheading
+      {Junior Frontend Developer}{November 2020 -- Present}
+      {Singularis Lab LLC.}{Volgograd, Russia}
+      \CVItemListStart
+        \CVItem{Develop client side application on TypeScript, React}
+      \CVItemListEnd
+    \CVSubheading
+      {Frontend Intern}{July 2020 -- October 2020}
+      {Singularis Lab LLC.}{Volgograd, Russia}
+      \CVItemListStart
+        \CVItem{Inventoried and maintained Physics Department lab equipment}
+    \CVItemListEnd
+    \CVSubheading
+      {Intern Programmer}{January 2020 -- April 2020}
+      {Intervolga}{Volgograd, Russia}
+      \CVItemListStart
+        \CVItem{Deleloped}
+      \CVItemListEnd
+  \CVSubHeadingListEnd
+
+%-----PROJECTS AND RESEARCH----------------------------------------------------
+\begin{comment}
+Ideally the title of the work should speak for what it is. However if you feel
+like you should explain more about why the project is applicable to this job,
+use item list as is shown in the work experience section.
+\end{comment}
+
+\section{Projects and Research}
+  \CVSubHeadingListStart
+%    \CVSubheading
+%      {Title of Work}{When it was done}
+%      {Institution you worked with}{unused}
+    \CVSubheading
+      {{Premier-eye} $|$ \emph{\small{Python, React, Typescript, Flask}}}{2020-2021}
+      {Recognition program with an API and web interface. Recognizes cars and people from pictures. 
+      Separate components were written, packed in docker containers, for interaction between each other.}{}
+    \CVSubheading
+      {{Liquid Cloud} $|$ \emph{\small{Elixir, TypeScript, React}}}{2021}
+      {Austin College}{}
+    \CVSubheading
+      {{Metida} $|$ \emph{\small{Node.js, TypeScript, React}}}{2019-2020}
+      {Team project. I was mainly engaged in frontend. 
+      The project is the server and client parts of the blog platform with articles.}{}
+    \CVSubheading
+      {{Arduino meteostation} $|$ \emph{\small{C++, JavaScript}}}{2019}
+      {Implemented work with OpenWeatherMap API, with the translation of international names of weather 
+      event to Russian language. Also, there is a measurement of the main indicators inside the room. 
+      The data is presented on the LCD screen and the server is sent, where the infographics are displayed 
+      and the saved in database.}{}
+  \CVSubHeadingListEnd
+
+
+%-----CONFERENCES AND PRESENTATIONS--------------------------------------------
+\begin{comment}
+Again the title should have already been enough, but if it is necessary to add
+descriptions maintain the consistency from prior sections
+\end{comment}
+
+\section{Conferences and Presentations}
+  \CVSubHeadingListStart
+%    \CVSubheading % Example
+%      {Work Presented}{When}
+%      {Occasion}{}
+    \CVSubheading
+      {Photometric Filter Fidelity and Use for Be Star Identification}{November 2017}
+      {Austin College Physics Research Seminar}{}
+    \CVSubheading
+      {Reflectometry for Volumetric Soil Moisture Measurement}{May 2017}
+      {Austin College Atmospheric Physics Fair}{}
+    \CVSubheading
+      {Design and Manufacturing of Products using 3D Printing}{April 2017}
+      {Austin College Student Scholarship Conference}{}
+  \CVSubHeadingListEnd
+
+%-----HONORS AND AWARDS--------------------------------------------------------
+\section{Honors and Awards}
+  \CVSubHeadingListStart
+%    \CVSubheading %Example
+%      {What}{When}
+%      {Short Description}{}
+    \CVSubheading
+      {The final stage of the olympiad “I am professional}{Winter 2020}
+      {}{Moscow, Russia}
+    \CVSubheading
+    {WINTER SCHOOL URFU "SOFTWARE ENGINEERING AND RADIO ENGINEERING"}{Spring 2020}
+    {}{Sochi, Russia}
+  \CVSubHeadingListEnd
+
+%-----COMMUNITY INVOLVEMENT----------------------------------------------------
+\section{Community Involvement}
+  \CVSubHeadingListStart
+%    \CVSubheading %Example
+%      {What you did}{When you worked there}
+%      {Who you worked for}{Where they are located}
+    \CVSubheading
+
+  \CVSubHeadingListEnd
+
+%-----SKILLS-------------------------------------------------------------------
+\begin{comment}
+This section is compressed from the various skills sections that Euro CV
+recommends.
+\end{comment}
+
+\section{Skills}
+ \begin{itemize}[leftmargin=0.5cm, label={}]
+    \small{\item{
+     \textbf{Languages}{: English (B2), Russian (Native) } \\
+     \textbf{Programming}{: TypeScript, JavaScript, Python, C\# } \\
+     \textbf{Technologies}{: Git, Docker } \\
+    }}
+ \end{itemize}
+    
+%------------------------------------------------------------------------------
+\end{document}
