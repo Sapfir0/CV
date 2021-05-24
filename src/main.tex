@@ -92,12 +92,18 @@ strokes, sans-serif fonts are sans (without) these strokes.
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\LittleCVSubheading}[2]{
+\newcommand{\LittleCVSubheading}[3]{
   \vspace{-2pt}\item
-    \begin{tabular*}{}[t]{l@{\extracolsep{\fill}}r}
-      \emph{\small{#1}} $|$ #2 
+    \begin{tabular*}{0.5\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \emph{\small{#1}} 
+      {\href{#2}{\includegraphics[scale=.3]{src/images/GitHub-Mark-32px.png}}} 
+      $|$ 
+      #3
+      
+
     \end{tabular*}\vspace{-7pt}
 }
+
 
 \newcommand{\CVSubItem}[1]{\CVItem{#1}\vspace{-4pt}}
 
@@ -227,13 +233,13 @@ use item list as is shown in the work experience section.
 
  \CVSubHeadingListStart
     \LittleCVSubheading
-        {Python, React, Typescript, Flask}{Territory monitoring system}
+        {Python, React, Typescript, Flask}{https://github.com/Sapfir0/premier-eye}{Territory monitoring system}
     \LittleCVSubheading
-        {Elixir, TypeScript, React}{Cloud system, remote file management supported}
+        {Elixir, TypeScript, React}{https://github.com/Sapfir0/LiquidCloud}{Cloud system, remote file management supported}
     \LittleCVSubheading
-        {Node.js, TypeScript, React}{Team project. Supported article and comments creation}
+        {Node.js, TypeScript, React}{https://github.com/avdosev/metida}{Team project. Supported article and comments creation}
     \LittleCVSubheading
-        {C++, JavaScript}{Hardware project. Work with sensors, OpenWeatherMap integration, data visualisation}
+        {C++, JavaScript}{https://github.com/Sapfir0/Meteo-Server}{Hardware project. Work with sensors, OpenWeatherMap integration, data visualisation}
   \CVSubHeadingListEnd
 
 
