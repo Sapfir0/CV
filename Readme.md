@@ -4,7 +4,7 @@
 
 
 ## Local build
-
-    pdflatex src/main.tex
+    cd src
+    pdflatex main.tex
 
 ## [CV Template](https://github.com/fizixmastr/CV-Resume)
