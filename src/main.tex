@@ -92,15 +92,13 @@ strokes, sans-serif fonts are sans (without) these strokes.
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\LittleCVSubheading}[3]{
+\newcommand{\GithubProjectDescription}[3]{
   \vspace{-2pt}\item
     \begin{tabular*}{0.5\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \emph{\small{#1}} 
       {\href{#2}{\includegraphics[scale=.3]{images/GitHub-Mark-32px.png}}} 
       $|$ 
       #3
-      
-
     \end{tabular*}\vspace{-7pt}
 }
 
@@ -232,13 +230,13 @@ use item list as is shown in the work experience section.
 \section{Projects and Research}
 
  \CVSubHeadingListStart
-    \LittleCVSubheading
+    \GithubProjectDescription
         {Python, React, Typescript, Flask}{https://github.com/Sapfir0/premier-eye}{Territory monitoring system}
-    \LittleCVSubheading
+    \GithubProjectDescription
         {Elixir, TypeScript, React}{https://github.com/Sapfir0/LiquidCloud}{Cloud system, remote file management supported}
-    \LittleCVSubheading
+    \GithubProjectDescription
         {Node.js, TypeScript, React}{https://github.com/avdosev/metida}{Team project. Supported article and comments creation}
-    \LittleCVSubheading
+    \GithubProjectDescription
         {C++, JavaScript}{https://github.com/Sapfir0/Meteo-Server}{Hardware project. Work with sensors, OpenWeatherMap integration, data visualisation}
   \CVSubHeadingListEnd
 
