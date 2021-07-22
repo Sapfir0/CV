@@ -11,8 +11,7 @@ jobs:
     - name: Build document
       uses: xu-cheng/latex-action@v2
       with:
-        # Переименуйте, если у вас другой файл
-        root_file: main.tex
+        root_file: CV.tex
         # Больше параметров в офф. документации
         working_directory: src/
         # Аргументы, к которыми запускать компилятор (latexmk)

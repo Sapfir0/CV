@@ -18,17 +18,10 @@
 \usepackage{tabularx}
 \usepackage{tikz}
 \input{glyphtounicode}
+\usepackage{contour}
+\usepackage{ulem}
 
 %-----FONT OPTIONS-------------------------------------------------------------
-\begin{comment}
-The font of the document will impact not just how readable it is, but how it is
-perceived. In the "The Craft of Scientific Writing" by Michael Alley, shares a
-common fonts for publication as well as their use. I have chosen to use
-Palatino for its legibility, some others are given below. There is far too much
-about typography to discus here. Note: serif fonts have short projecting
-strokes, sans-serif fonts are sans (without) these strokes.
-\end{comment}
-
 
 % serif
  \usepackage{palatino}
@@ -95,12 +88,25 @@ strokes, sans-serif fonts are sans (without) these strokes.
 \newcommand{\GithubProjectDescription}[3]{
   \vspace{-2pt}\item
     \begin{tabular*}{0.5\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \emph{\small{#1}} 
+      \textit{#1}
       {\href{#2}{\includegraphics[scale=.3]{images/GitHub-Mark-32px.png}}} 
       $|$ 
       #3
     \end{tabular*}\vspace{-7pt}
 }
+
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+
+\newcommand{\lowDescendersUnderline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+\newcommand{\link}[2]{
+  \href{#1}{\lowDescendersUnderline{#2}}
+}
+
 
 
 \newcommand{\CVSubItem}[1]{\CVItem{#1}\vspace{-4pt}}
@@ -121,8 +127,8 @@ strokes, sans-serif fonts are sans (without) these strokes.
 
 \begin{center}
    \textbf{\Huge \scshape Yurev Alexander} \\ \vspace{1pt} %\scshape sets small capital letters, remove if desired
-   \small +7 919-545-5574 $|$ 
-   \href{mailto:alexander.yurev@internet.ru}{\underline{alexander.yurev@internet.ru}} $|$\\
+   \small Saint-Petersburg  \\
+   \small +7 919-545-5574 $|$ \href{mailto:alexander.yurev@internet.ru}{\underline{alexander.yurev@internet.ru}} $|$\\
    \href{https://github.com/Sapfir0}{\underline{Github}} $|$
    \href{https://linkedin.com/in/yurevalexander}{\underline{LinkedIn}} $|$
    \href{https://habr.com/ru/users/alexanderyurev/}{\underline{Habr}}
@@ -132,14 +138,13 @@ strokes, sans-serif fonts are sans (without) these strokes.
 %-----EDUCATION----------------------------------------------------------------
 \section{Education}
   \CVSubHeadingListStart
-    % \CVSubheading
-    %   {{Master of Computer Science }}{Sep. 2021 -- July 2023}
-    %   {ITMO University}{Saint Petersburg, Russia}
+    \CVSubheading
+      {{Master of Computer Science }}{Sep. 2021 -- July 2023}
+      {ITMO University}{Saint Petersburg, Russia}
 
     \CVSubheading
       {{Bachelor of Computer Science }}{Sep. 2017 -- July 2021}
       {Volgograd State Technical University}{Volgograd, Russia}
-
 
   \CVSubHeadingListEnd
 
@@ -148,7 +153,7 @@ strokes, sans-serif fonts are sans (without) these strokes.
 \section{Work Experience}
   \CVSubHeadingListStart
     \CVSubheading
-      {Software Engineer Intern}{July 2021 -- Present}
+      {Software Engineer Intern}{July 2021 -- Aug. 2021}
       {Intel Corporation}{Nizhny Novgorod, Russia}
     \CVItemListStart
       \CVItem{Developing core frontend libraries for new Intel's design system}
@@ -156,22 +161,24 @@ strokes, sans-serif fonts are sans (without) these strokes.
 
     \CVSubheading
       {Junior Frontend Developer}{Nov. 2020 -- June 2021}
-      {Singularis Lab LLC.}{Volgograd, Russia}
+      {\link{https://www.singularis-lab.com/}{Singularis Lab LLC.}}{Volgograd, Russia}
     \CVItemListStart
       \CVItem{Developed Volma Drivers application in a team of 5 developers (React, Redux, TS)}
       \CVItem{Developed client side of IDM Clinic (React, MobX, TS)}
+      \CVItem{Developed demo app for time series analysis (Flutter, Provider)}
+      \CVItem{Writed several technical articles to Habr.com}
     \CVItemListEnd
 
     \CVSubheading
       {Frontend Intern}{July 2020 -- Oct. 2020}
-      {Singularis Lab LLC.}{Volgograd, Russia}
+      {\link{https://www.singularis-lab.com/}{Singularis Lab LLC.}}{Volgograd, Russia}
     \CVItemListStart
       \CVItem{Developed a client side application for manual testing system (React, Redux, TS)}
     \CVItemListEnd
-
+    
     \CVSubheading
       {Web Developer}{Jan. 2020 -- April 2020}
-      {Intervolga}{Volgograd, Russia}
+      {\link{https://www.intervolga.ru/}{Intervolga}}{Volgograd, Russia}
       \CVItemListStart
         \CVItem{Development web sites (JS, PHP)}
       \CVItemListEnd
@@ -200,7 +207,7 @@ strokes, sans-serif fonts are sans (without) these strokes.
       {Winter school URFU "Software engineering and radio engieering"}{Spring 2020}
       {During the five days of school, I’m learned how improve the soft-skills. }{Sochi, Russia}
     \CVSubheading
-      {Project “Campus” SKB KONTUR }{Fall 2019}
+      {\link{https://kontur.ru/education/programs/kampus/2020}{Project “Campus” SKB KONTUR} }{Fall 2019}
       {As part of a four-day field school, he learned the basics of designing in C\#, \\
       got the skills in using Git, DI containers and the skills in writing clean code. }{ Yekaterinburg, Russia }
   \CVSubHeadingListEnd
@@ -224,7 +231,7 @@ recommends.
     \small{\item{
      \textbf{Languages}{: English (B2), Russian (Native) } \\
      \textbf{Programming}{: TypeScript, JavaScript, Python } \\
-     \textbf{Frontend}{: React, Redux, MobX, Redux-saga } \\
+     \textbf{Frontend}{: React, Redux, MobX, Redux-saga, Webpack, Flutter } \\
      \textbf{Technologies}{: Git, Docker } \\
     }}
  \end{itemize}
