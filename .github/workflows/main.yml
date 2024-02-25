@@ -11,7 +11,7 @@ jobs:
     - name: Build document
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: CV.tex
+        root_file: Iurev_Frontend_CV.tex
         # Больше параметров в офф. документации
         working_directory: src/
         # Аргументы, к которыми запускать компилятор (latexmk)
