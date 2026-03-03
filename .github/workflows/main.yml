@@ -11,7 +11,7 @@ jobs:
     - name: Build document
       uses: dante-ev/latex-action@latest
       with:
-        root_file: Iurev_Frontend_CV.tex
+        root_file: src/Iurev_Frontend_CV.tex
     # Загружаем собранные pdf-файлы
     - name: Upload pdf document
       uses: actions/upload-artifact@v4
