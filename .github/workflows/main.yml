@@ -15,12 +15,6 @@ jobs:
             run: |
               cd data
               pdflatex Iurev_Frontend_CV.tex
-
-        - name: Bump version and push tag
-          uses: anothrNick/github-tag-action@v1 # Don't use @master or @v1 unless you're happy to test the latest version
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token
-
   deploy:
     runs-on: ubuntu-latest
     # Деплой будет только на ветке master. Закомментируйте, если не надо
@@ -37,9 +31,17 @@ jobs:
           echo "::set-output name=date::$(date +'%Y-%m-%d')"
           echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
 
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@v1 # Don't use @master or @v1 unless you're happy to test the latest version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token
+
       # Прикладываемые файлы надо заливать отдельным step
-      - name: Upload pdf asset
-        uses: softprops/action-gh-release@v2
-        if: github.ref_type == 'tag'
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          files: Iurev_Frontend_CV.pdf
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: Iurev_Frontend_CV.pdf
+          asset_name: ${{ matrix.asset_name }}
+          tag: ${{ github.ref }}
+          overwrite: true
