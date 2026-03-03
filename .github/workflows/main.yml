@@ -15,10 +15,6 @@ jobs:
             run: |
               cd data
               pdflatex Iurev_Frontend_CV.tex
-        - name: Bump version and push tag
-          uses: anothrNick/github-tag-action@v1 # Don't use @master or @v1 unless you're happy to test the latest version
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,7 +38,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: Iurev_Frontend_CV.pdf
+          file: data/Iurev_Frontend_CV.pdf
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
           overwrite: true
