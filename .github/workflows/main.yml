@@ -5,22 +5,19 @@ jobs:
     # Базовая ОС, на которой будут исполняться команды. Оставим ubuntu
     runs-on: ubuntu-latest
     steps:
-    # Необходимо использовать этот action, чтобы получить содержимое репо
-    - uses: actions/checkout@v4
-    # Компилируем документ
-    - name: Build document
-      uses: dante-ev/latex-action@latest
-      with:
-        root_file: src/Iurev_Frontend_CV.tex
-    # Загружаем собранные pdf-файлы
-    - name: Upload pdf document
-      uses: actions/upload-artifact@v4
-      with:
-        # Это значение используется как ключ в хранилище
-        name: my_doc
-        # Путь до собранного pdf. Может содержать “*”, “**”
-        # Здесь это <working_directory>/<jobname>.pdf
-        path: src/my_doc.pdf
+        - name: Check out the repo
+          uses: actions/checkout@v4
+        - name: Run the build process with Docker
+          uses: addnab/docker-run-action@v3
+          with:
+            image: thomasweise/docker-texlive-full:latest
+            options: -v ${{ github.workspace }}:/data
+            run: |
+              cd data
+              pdflatex src/Iurev_Frontend_CV.pdf
+        - uses: stefanzweifel/git-auto-commit-action@v5
+          with:
+            commit_message: Apply pdflatex changes
   deploy:
     runs-on: ubuntu-latest
     # Деплой будет только на ветке master. Закомментируйте, если не надо
