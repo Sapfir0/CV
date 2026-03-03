@@ -15,9 +15,12 @@ jobs:
             run: |
               cd data
               pdflatex Iurev_Frontend_CV.tex
-        - uses: stefanzweifel/git-auto-commit-action@v5
-          with:
-            commit_message: Apply pdflatex changes
+
+        - name: Bump version and push tag
+          uses: anothrNick/github-tag-action@v1 # Don't use @master or @v1 unless you're happy to test the latest version
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token
+
   deploy:
     runs-on: ubuntu-latest
     # Деплой будет только на ветке master. Закомментируйте, если не надо
@@ -33,6 +36,7 @@ jobs:
         run: |
           echo "::set-output name=date::$(date +'%Y-%m-%d')"
           echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
       # Прикладываемые файлы надо заливать отдельным step
       - name: Upload pdf asset
         uses: softprops/action-gh-release@v2
