@@ -14,7 +14,6 @@ jobs:
             options: -v ${{ github.workspace }}:/data
             run: |
               cd data
-              ls
               pdflatex Iurev_Frontend_CV.tex
         - uses: stefanzweifel/git-auto-commit-action@v5
           with:
@@ -37,6 +36,6 @@ jobs:
       # Прикладываемые файлы надо заливать отдельным step
       - name: Upload pdf asset
         uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
         with:
-          files: |
-            Iurev_Frontend_CV.pdf
+          files: Iurev_Frontend_CV.pdf
