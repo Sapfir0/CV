@@ -9,9 +9,9 @@ jobs:
     - uses: actions/checkout@v4
     # Компилируем документ
     - name: Build document
-      uses: BaseMax/github-actions-build-latex-pdf@v1
+      uses: dante-ev/latex-action@latest
       with:
-        tex_path: Iurev_Frontend_CV.tex
+        root_file: Iurev_Frontend_CV.tex
     # Загружаем собранные pdf-файлы
     - name: Upload pdf document
       uses: actions/upload-artifact@v4
