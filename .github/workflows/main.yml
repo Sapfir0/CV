@@ -1,44 +1,32 @@
-name: Build and deploy latex sources to GitHub Pages
-on: push
+name: Build LaTeX PDF
+
+on:
+  push:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
 jobs:
-  build:
-    # Базовая ОС, на которой будут исполняться команды. Оставим ubuntu
+  build-pdf:
     runs-on: ubuntu-latest
     steps:
-        - name: Check out the repo
-          uses: actions/checkout@v4
-        - name: Run the build process with Docker
-          uses: addnab/docker-run-action@v3
-          with:
-            image: thomasweise/docker-texlive-full:latest
-            options: -v ${{ github.workspace }}:/data
-            run: |
-              cd data
-              pdflatex Iurev_Frontend_CV.tex
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  deploy:
-    runs-on: ubuntu-latest
-    # Деплой будет только на ветке master. Закомментируйте, если не надо
-    if: github.ref == 'refs/heads/master'
-    # Можно зависеть от любого другого job. Порядок выполнения будет подстраиваться.
-    needs: [build]
-    steps:
-      # Это хак, чтобы дергать bash-команды и запоминанать их результат
-      - name: Variables
-        # id используется внутренне: по нему можно ссылаться на результаты из другого step
-        id: vars
-        # echo в таком форматировании позволит впоследствии ссылаться на результаты через ${{ steps.<step_id>.outputs.<variable_name> }}
+      - name: Build Docker image
+        run: docker build -f Dockerfile -t compile-latex .
+
+      - name: Build PDF
         run: |
-          echo "::set-output name=date::$(date +'%Y-%m-%d')"
-          echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./Iurev_Frontend_CV.tex
 
-
-      # Прикладываемые файлы надо заливать отдельным step
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: data/Iurev_Frontend_CV.pdf
-          asset_name: ${{ matrix.asset_name }}
-          tag: ${{ github.ref }}
-          overwrite: true
+          name: Iurev_Frontend_CV.pdf
+          path: Iurev_Frontend_CV.pdf
+
+      - name: Create release
+        run: |
+          gh release upload ${{github.event.release.tag_name}} Iurev_Frontend_CV.pdf
