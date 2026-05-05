@@ -16,11 +16,11 @@ jobs:
 
       - name: Build PDF
         run: |
-          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./Iurev_Frontend_CV.tex
+          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./Spanish.tex
 
       - name: Check for PDF
         run: |
-          if [ -f "Iurev_Frontend_CV.pdf" ]; then
+          if [ -f "Spanish.pdf" ]; then
             echo "PDF file found"
           else
             echo "PDF file not found"
@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: resume-pdf
-          path: Iurev_Frontend_CV.pdf
+          path: Spanish.pdf
 
   create_release:
     needs: compile_latex
@@ -69,6 +69,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: ./Iurev_Frontend_CV.pdf
-          asset_name: Iurev_Frontend_CV.pdf
+          asset_path: ./Spanish.pdf
+          asset_name: Spanish.pdf
           asset_content_type: application/pdf

@@ -1,0 +1,237 @@
+
+  %------------------------------------------------------------------------------
+% CV in Latex
+% Author : Iurev Aleksandr
+% Based off of: https://github.com/sb2nov/resume and Jake's Resume on Overleaf
+%------------------------------------------------------------------------------
+
+\documentclass[A4,11pt]{article}
+%\documentclass[letterpaper,11pt]{article} %For use in US
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{tikz}
+\input{glyphtounicode}
+\usepackage{contour}
+\usepackage{ulem}
+
+%-----FONT OPTIONS-------------------------------------------------------------
+
+% serif
+ \usepackage{palatino}
+% \usepackage{times} %This is the default as well
+% \usepackage{charter}
+
+% sans-serif
+% \usepackage{helvet}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+%-----PAGE SETUP---------------------------------------------------------------
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-1cm}
+\addtolength{\evensidemargin}{-1cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\topmargin}{-1cm}
+\addtolength{\textheight}{2cm}
+
+% Margins for US Letter size
+%\addtolength{\oddsidemargin}{-0.5in}
+%\addtolength{\evensidemargin}{-0.5in}
+%\addtolength{\textwidth}{1in}
+%\addtolength{\topmargin}{-.5in}
+%\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0cm}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that .pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-----CUSTOM COMMANDS FOR FORMATTING SECTIONS----------------------------------
+\newcommand{\CVItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\CVSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \small#3 & \small #4 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\CVSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}
+      \text{#1} \text{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\GithubProjectDescription}[3]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.5\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textit{#1}
+      {\href{#2}{\includegraphics[scale=.3]{images/GitHub-Mark-32px.png}}} 
+      $|$ 
+      #3
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+
+\newcommand{\lowDescendersUnderline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+\newcommand{\link}[2]{
+  \href{#1}{\lowDescendersUnderline{#2}}
+}
+
+
+
+\newcommand{\CVSubItem}[1]{\CVItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\CVSubHeadingListStart}{\begin{itemize}[leftmargin=0.5cm, label={}]}
+% \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]} % Uncomment for US
+\newcommand{\CVSubHeadingListEnd}{\end{itemize}}
+\newcommand{\CVItemListStart}{\begin{itemize}}
+\newcommand{\CVItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%------------------------------------------------------------------------------
+% CV STARTS HERE  %
+%------------------------------------------------------------------------------
+\begin{document}
+
+
+\begin{center}
+  \textbf{\Huge \scshape Iurev Aleksandr} \\ \vspace{1pt} %\scshape sets small capital letters, remove if desired
+  \small San Petersburgo  \\
+  \small +7 919-545-5574 $|$ \href{mailto:alexander.yurev@internet.ru}{\underline{alexander.yurev@internet.ru}} $|$\\
+  \href{https://github.com/Sapfir0}{\underline{Github}} $|$
+  \href{https://linkedin.com/in/yurevalexander}{\underline{LinkedIn}} $|$
+  \href{https://habr.com/ru/users/alexanderyurev/}{\underline{Habr}} $|$
+  \href{https://tg-me.ru/Sapfir0}{\underline{Telegram}}
+
+
+\end{center}
+
+
+%-----EDUCATION----------------------------------------------------------------
+\section{Education}
+\CVSubHeadingListStart
+\CVSubheading
+{{Máster en Ingeniería de Software }}{Septiembre 2021 -- July 2023}
+{ITMO University}{San Petersburgo, Rusia}
+
+\CVSubheading
+{{ Grado en Informática }}{September 2017 -- July 2021}
+{Universidad Técnica Estatal de Volgogrado}{Volgograd, Rusia}
+
+\CVSubHeadingListEnd
+
+%-----WORK EXPERIENCE---------------------------------------------------------
+
+\section{Work Experience}
+
+\CVSubHeadingListStart
+
+\CVSubheading
+{Frontend Developer}{May 2024 -- Present}
+{\link{https://tochka.com/}{Tochka} (\#1 bank in Russia for self-emloyed)}{Saint Petersburg, Russia, Remote}
+\CVItemListStart
+\CVItem{Se redujo el tamaño del paquete de micro frontend en un 23\% (600 kb), y se aceleró la compilación en un 3,59 % (0,5 s) (React)}
+\CVItem{Se crearon varios tipos de suscripción: tribunales (8\% de conversión) y fragmentación de la empresa}
+\CVItem{Lidero nuestro equipo de frontend con 2 desarrolladores}
+\CVItemListEnd
+
+\CVSubheading
+{Frontend Engineer}{October 2021 -- May 2024}
+{\link{https://sbermarket.ru/}{SberMarket} (\#1 eGrocery in Russia)}{Saint Petersburg, Russia, Remote}
+\CVItemListStart
+\CVItem{Obtuvo el primer lugar en el "Bugathon" y corrigió numerosos errores.}
+\CVItem{Alcanzó un volumen bruto de mercancías (GMV) de 1.500 millones de rublos para el programa de fidelización.}
+\CVItem{Implementó nuevas funciones para las suscripciones de servicio, mejorando la experiencia del usuario y la funcionalidad.}
+\CVItem{Creó un programa de fidelización para gestionar la acumulación y el cobro de bonificaciones, impulsando la participación del cliente (React, Redux).}
+\CVItem{Logró una tasa de conversión significativa del 16\% en la página de "Resultados de 2021" (Next.js, TS).}
+\CVItem{Desempeñó un papel clave en el desarrollo de una nueva página del sistema de referidos y añadió la funcionalidad de referidos (React, Redux, Next.js, TS).}
+\CVItem{Desarrolló un catálogo SEO para mejorar la visibilidad en los motores de búsqueda y el rendimiento del sitio web (React, Redux, Next.js, TS).}
+\CVItem{Desarrolló un servicio de administración para gestionar las acciones promocionales y el programa de fidelización.} acumulaciones (React, Redux, sagas RTK, TS)}
+\CVItemListEnd
+
+
+\CVSubheading
+{Software Engineering Intern}{July 2021 -- August 2021}
+{\link{http://summer.russia-students.ru/}{Intel Corporation}}{Nizhny Novgorod, Russia, Remote}
+\CVItemListStart
+\CVItem{Se redujo el tiempo de compilación de la interfaz gráfica multitema de VTune en un 48,5\%}
+\CVItem{Desarrollé varios componentes para el nuevo sistema de diseño de Intel en el equipo internacional Spark. Participé en el inicio de un proyecto de sistema de diseño, creando los primeros componentes web basados ​​en diseños predefinidos en Figma. Se implementaron botones y campos de texto. (Lit, Storybook, TS)}
+\CVItem{Desarrollé un entorno de pruebas para los componentes React de \link{https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html}{VTune}. El entorno de pruebas ayudó a encontrar y corregir un error en el componente Dropbox. (React, TS)}
+\CVItemListEnd
+
+\CVSubheading
+{Software Engineering Intern → Frontend Developer}{July 2020 -- June 2021}
+{\link{https://www.singularis-lab.com/}{Singularis Lab LLC.}}{Volgograd, Russia, Hybrid}
+\CVItemListStart
+\CVItem{Desarrollé una aplicación del lado del cliente para un sistema de pruebas manuales (React, Redux, TS)}
+\CVItem{Desarrollé la aplicación \link{https://www.singularis-lab.com/ru/project/volma-portal.html}{Volma Drivers} en un equipo de 5 desarrolladores (React, Redux, TS)}
+\CVItem{Creé una página para monitorear la ubicación de los conductores en el mapa, generando un informe complejo}
+\CVItem{Desarrollé el lado del cliente de IDM Clinic. Cambié el gestor de estado de Redux a MobX (React, MobX, TS)}
+\CVItem{Desarrollé una aplicación de demostración para análisis de series temporales. Se creó una aplicación móvil que rastrea datos de un acelerómetro y calcula la aceleración, la velocidad y el sobreimpulso. Se utilizaron los criterios de Student e Irwin (Flutter, Provider)}
+\CVItem{Escribí varios artículos técnicos para Habr.com}
+\CVItemListEnd
+
+%-----PROJECTS AND RESEARCH----------------------------------------------------
+\section{Projects and Research}
+
+\CVSubHeadingListStart
+\GithubProjectDescription
+{Python, Flask, TS, React}{https://github.com/Sapfir0/premier-eye}{Sistema de monitoreo de territorio}
+\GithubProjectDescription
+{Elixir, TS, React}{https://github.com/Sapfir0/LiquidCloud}{Sistema en la nube, compatible con gestión remota de archivos}
+\GithubProjectDescription
+{Node.js, TS, React}{https://github.com/avdosev/metida}{Proyecto de equipo. Permite la creación de artículos y comentarios}
+\GithubProjectDescription
+{C++, JS}{https://github.com/Sapfir0/Meteo-Server}{Proyecto de hardware. Compatible con sensores, integración con OpenWeatherMap y visualización de datos}
+\CVSubHeadingListEnd
+
+%-----SKILLS-------------------------------------------------------------------
+\begin{comment}
+This section is compressed from the various skills sections that Euro CV
+recommends.
+\end{comment}
+
+\section{Skills}
+\begin{itemize}[leftmargin=0.5cm, label={}]
+  \small{\item{
+                \textbf{Languages}{: English (B1+), Russian (Native) } \\
+                \textbf{Programming}{: TypeScript, JavaScript } \\
+                \textbf{Frontend}{: React, Redux, Webpack; } \\
+                \textbf{Technologies}{: Git, Docker } \\
+          }}
+\end{itemize}
+
+%------------------------------------------------------------------------------
+\end{document}
