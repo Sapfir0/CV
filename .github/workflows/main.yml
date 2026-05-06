@@ -16,8 +16,8 @@ jobs:
 
       - name: Build PDF
         run: |
-          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./Iurev_Frontend_CV.tex
-          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./Spanish.tex
+          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./work/Iurev_Frontend_CV.tex
+          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./work/Spanish.tex
 
       - name: Check for PDF
         run: |
@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: resume-pdf
-          path: Iurev_Frontend_CV.pdf
+          path: work/
 
   create_release:
     needs: compile_latex
@@ -70,6 +70,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: ./Iurev_Frontend_CV.pdf
+          asset_path: work
           asset_name: Iurev_Frontend_CV.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          asset_path: work
+          asset_name: Spanish.pdf
           asset_content_type: application/pdf
