@@ -16,8 +16,8 @@ jobs:
 
       - name: Build PDF
         run: |
-          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./work/Iurev_Frontend_CV.tex
-          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./work/Spanish.tex
+          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./Iurev_Frontend_CV.tex
+          docker run --rm -i -v "$PWD":/data compile-latex pdflatex ./Spanish.tex
 
       - name: Check for PDF
         run: |
@@ -32,7 +32,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: resume-pdf
-          path: work/
+          path: ./Iurev_Frontend_CV.pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sp-resume-pdf
+          path: ./Spanish.pdf
 
   create_release:
     needs: compile_latex
@@ -63,6 +69,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: resume-pdf
+
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: sp-resume-pdf
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
